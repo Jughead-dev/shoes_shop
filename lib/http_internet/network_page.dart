@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:translate/http_internet/network.dart';
 import 'package:translate/http_internet/post.dart';
 import 'package:translate/http_internet/post_item.dart';
+import 'package:translate/pinterest_clon/unsplash_api.dart';
 
 class NetworkPage extends StatefulWidget {
   const NetworkPage({super.key});
@@ -16,7 +17,7 @@ class _NetworkPageState extends State<NetworkPage> {
   @override
   void initState() {
     super.initState();
-    _getPostsList();
+    _getImageList();
   }
 
   @override
@@ -99,6 +100,12 @@ class _NetworkPageState extends State<NetworkPage> {
     ) {
       print(response);
       _getPostsList();
+    });
+  }
+
+  void _getImageList() {
+    UnsplashApi.GET(UnsplashApi.IMAGE_LIST, {}).then((response) {
+      print(response);
     });
   }
 }
